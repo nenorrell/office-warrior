@@ -166,6 +166,19 @@ function initializePlayer(name, playerClass) {
       attackModifier: 2,
       skills: [
         {
+          name: 'Bash with calculator',
+          description: '1d6 + 3 damage',
+          cooldown: 0,
+          maxCooldown: 0,
+          action: function () {
+            const damage = rollDice(6) + this.attackModifier;
+            const targetIndex = 0; // Default to first enemy
+            dealDamageToEnemy(damage, targetIndex);
+            combatLog(`You attack with your keyboard and deal ${damage} damage.`);
+            endPlayerTurn();
+          },
+        },
+        {
           name: 'Energy Vampire',
           description: '1d6 damage, heal equal to damage dealt',
           cooldown: 0,
