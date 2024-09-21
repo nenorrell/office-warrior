@@ -1,0 +1,100 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Office Warrior</title>
+  <!-- Include Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind CSS Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {},
+      },
+    };
+  </script>
+  <!-- Include Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-hYuhxX9lVXVxENmYBVQxmdovHc6P0DR9vCn5fd4Vaj+Uaq6N94ReoKxVbsJk9LOv1M69LhFRenGxCgBBH1vYsw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="bg-gray-100">
+  <div id="app" class="container mx-auto p-4">
+    <!-- Character Creation -->
+    <div id="character-creation" class="max-w-md mx-auto bg-white p-6 rounded shadow">
+      <h1 class="text-2xl font-bold mb-4 text-center">Office Warrior</h1>
+      <div class="mb-4">
+        <label class="block text-gray-700">Enter Your Name:</label>
+        <input id="player-name" type="text" class="p-2 mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700">Choose Your Class:</label>
+        <select id="player-class" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+          <option value="software-engineer">Software Engineer</option>
+          <option value="sales-executive">Sales Executive</option>
+          <option value="accountant">Accountant</option>
+        </select>
+      </div>
+      <button id="start-game" class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600">Start Game</button>
+    </div>
+
+    <!-- Game Interface -->
+    <div id="game-interface" class="hidden">
+      <!-- Player Stats -->
+      <div id="player-stats" class="bg-white p-4 rounded shadow mb-4">
+        <h2 class="text-xl font-bold mb-2">Player Stats</h2>
+        <p id="player-info"></p>
+        <!-- Take a Break Button -->
+        <button id="take-break" class="bg-green-500 text-white p-2 rounded-md hover:bg-green-600 hidden">Take a Break</button>
+      </div>
+
+      <!-- Combat Log -->
+      <div id="main-combat-log" class="bg-gray-200 p-2 h-48 overflow-auto rounded mb-4">
+        <!-- Combat log messages will appear here -->
+      </div>
+
+      <!-- Game Grid -->
+      <div id="game-grid" class="grid grid-cols-5 gap-1 mb-4">
+        <!-- Cells will be generated dynamically -->
+      </div>
+
+      <!-- Movement Buttons -->
+      <div class="flex justify-center">
+        <button id="move-north" class="bg-gray-300 p-2 m-1 rounded">North</button>
+      </div>
+      <div class="flex justify-center">
+        <button id="move-west" class="bg-gray-300 p-2 m-1 rounded">West</button>
+        <button id="move-east" class="bg-gray-300 p-2 m-1 rounded">East</button>
+      </div>
+      <div class="flex justify-center">
+        <button id="move-south" class="bg-gray-300 p-2 m-1 rounded">South</button>
+      </div>
+    </div>
+
+    <!-- Combat Modal -->
+    <div id="combat-modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+      <div class="bg-white p-6 rounded shadow-lg max-w-md w-full">
+        <h2 class="text-xl font-bold mb-2">Combat Encounter</h2>
+        <!-- Player Stats in Modal -->
+        <div id="modal-player-stats" class="mb-4">
+          <!-- Player stats will be displayed here -->
+        </div>
+        <!-- Enemy Stats -->
+        <div id="enemy-stats" class="mb-4">
+          <!-- Enemy stats will be displayed here -->
+        </div>
+        <!-- Actions -->
+        <div id="actions" class="mb-4">
+          <!-- Action buttons will be generated dynamically -->
+        </div>
+        <!-- Combat Log in Modal -->
+        <div id="modal-combat-log" class="bg-gray-200 p-2 h-48 overflow-auto rounded mb-4">
+          <!-- Combat log messages will appear here -->
+        </div>
+        <button id="close-combat" class="w-full bg-red-500 text-white p-2 rounded-md hover:bg-red-600">Flee</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
