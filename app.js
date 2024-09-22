@@ -139,12 +139,12 @@ function initializePlayer(name, playerClass) {
           action: function () {
             const roll = rollDice(6);
             if (roll <= 3) {
-              this.buffs.push({ type: 'attack', value: 3, duration: 1 });
+              this.buffs.push({ type: 'attack', value: 3, duration: 2 });
               combatLog('You closed the deal! Gain +3 attack for next turn.');
             } else {
               combatLog('Failed to close the deal and lose your turn.');
               // Skip next turn
-              this.debuffs.push({ type: 'skipTurn', duration: 1 });
+              this.debuffs.push({ type: 'skipTurn', duration: 2 });
             }
 
             // Set the skill's cooldown
@@ -711,7 +711,7 @@ const bossSkills = {
     const roll = rollDice(6);
     if (roll >= 4) {
       combatLog('The HR Manager uses Mandatory Training! You skip your next turn.');
-      player.debuffs.push({ type: 'skipTurn', duration: 1 });
+      player.debuffs.push({ type: 'skipTurn', duration: 2 });
     } else {
       combatLog('The HR Manager attempts Mandatory Training but you avoid it.');
     }
