@@ -60,7 +60,6 @@ function initializePlayer(name, playerClass) {
             const damage = rollDice(6) + this.attackModifier;
             const targetIndex = 0; // Default to first enemy
             dealDamageToEnemy(damage, targetIndex);
-            combatLog(`You attack with your keyboard and deal ${damage} damage.`);
             endPlayerTurn();
           },
         },
@@ -127,7 +126,6 @@ function initializePlayer(name, playerClass) {
             const damage = rollDice(8) + this.attackModifier;
             const targetIndex = 0;
             dealDamageToEnemy(damage, targetIndex);
-            combatLog(`You attack with your phone and deal ${damage} damage.`);
             endPlayerTurn();
           },
         },
@@ -174,7 +172,6 @@ function initializePlayer(name, playerClass) {
             const damage = rollDice(6) + this.attackModifier;
             const targetIndex = 0; // Default to first enemy
             dealDamageToEnemy(damage, targetIndex);
-            combatLog(`You attack with your calculator and deal ${damage} damage.`);
             endPlayerTurn();
           },
         },
@@ -195,7 +192,7 @@ function initializePlayer(name, playerClass) {
             const adjustedCooldown = Math.max(this.skills[0].maxCooldown - cooldownReduction, 0);
             this.cooldowns['Energy Vampire'] = adjustedCooldown;
 
-            combatLog(`You drain energy, deal ${damage} damage, and heal ${heal} health.`);
+            combatLog(`You drain energy and heal ${heal} health.`);
             endPlayerTurn();
           },
         },
