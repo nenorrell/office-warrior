@@ -167,14 +167,14 @@ function initializePlayer(name, playerClass) {
       skills: [
         {
           name: 'Bash with calculator',
-          description: '1d6 + 3 damage',
+          description: '1d6 damage',
           cooldown: 0,
           maxCooldown: 0,
           action: function () {
             const damage = rollDice(6) + this.attackModifier;
             const targetIndex = 0; // Default to first enemy
             dealDamageToEnemy(damage, targetIndex);
-            combatLog(`You attack with your keyboard and deal ${damage} damage.`);
+            combatLog(`You attack with your calculator and deal ${damage} damage.`);
             endPlayerTurn();
           },
         },
@@ -814,7 +814,12 @@ function handleBuffsAndDebuffs() {
 
 // Roll Dice Function
 function rollDice(sides) {
-  return Math.floor(Math.random() * sides) + 1;
+  const value = Math.floor(Math.random() * sides) + 1;
+  if(value === 1) {
+    combatLog('Critical Failure!');
+    return 0;
+  }
+  return value;
 }
 
 // End Player Turn
