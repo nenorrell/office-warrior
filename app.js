@@ -89,13 +89,13 @@ function initializePlayer(name, playerClass) {
           cooldown: 0,
           maxCooldown: 2,
           action: function () {
-            const playerRoll = rollDice(6);
+            const playerRoll = rollDice(8);
             const enemyRoll = rollDice(4);
             const targetIndex = 0; // Default to first enemy
             if (playerRoll > enemyRoll) {
               currentEnemies[targetIndex].status = 'confused';
               currentEnemies[targetIndex].statusDuration = 2;
-              combatLog('You confuse the enemy with jargon. They may skip their next turn.');
+              combatLog('You confuse the enemy with jargon. They skip their next turn.');
             } else {
               combatLog('Your jargon failed to confuse the enemy.');
             }
@@ -567,6 +567,10 @@ function generateActionButtons() {
     const cooldown = player.cooldowns[skill.name] || 0;
     const isOnCooldown = cooldown > 0;
 
+    button.addEventListener('click', () => {
+      skill.action.call(player);
+    });
+
     if (isOnCooldown) {
       // Show cooldown counter in button text
       button.innerText = `${skill.name} (Cooldown - ${cooldown})`;
@@ -577,9 +581,6 @@ function generateActionButtons() {
       button.title = skill.description;
       button.disabled = false;
       button.classList.add('bg-blue-500', 'text-white', 'p-2', 'm-1', 'rounded', 'hover:bg-blue-700');
-      button.addEventListener('click', () => {
-        skill.action.call(player);
-      });
     }
 
     actionsContainer.appendChild(button);
