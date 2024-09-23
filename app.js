@@ -811,12 +811,7 @@ function handleBuffsAndDebuffs() {
 
 // Roll Dice Function
 function rollDice(sides) {
-  const value = Math.floor(Math.random() * sides) + 1;
-  if(value === 1) {
-    combatLog('Critical Failure!');
-    return 0;
-  }
-  return value;
+  return Math.floor(Math.random() * sides) + 1;
 }
 
 // End Player Turn
